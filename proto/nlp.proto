@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package nlp;
+
+option go_package = "github.com/DennisMRitchie/go-nlp-service/proto/nlp";
+
+service NLPServer {
+  rpc AnalyzeText(AnalyzeRequest) returns (AnalyzeResponse) {}
+}
+
+message AnalyzeRequest {
+  string text = 1;
+  string task = 2; // sentiment, classification, entities
+}
+
+message AnalyzeResponse {
+  string result = 1;
+  float confidence = 2;
+  map<string, float> entities = 3;
+  int64 processing_time_ms = 4;
+}
