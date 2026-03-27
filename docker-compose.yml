@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  go-nlp:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PYTHON_NLP_ADDR=python-nlp:50051
+    depends_on:
+      - python-nlp
+
+  python-nlp:
+    image: python:3.11-slim
+    command: >
+      sh -c "pip install --no-cache-dir fastapi uvicorn transformers torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && 
+             uvicorn main:app --host 0.0.0.0 --port 50051"
+    volumes:
+      - ./python-nlp:/app
+    working_dir: /app
+    ports:
+      - "50051:50051"
