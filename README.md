@@ -26,12 +26,14 @@ curl -X POST http://localhost:8080/api/v1/analyze \
     "text": "I absolutely love this product, it changed my life!",
     "task": "sentiment"
   }'
+
 Technologies
 Go 1.23
 Gin Framework
 gRPC + Protobuf
 OpenTelemetry
 Docker & Docker Compose
+
 Project Structure
 cmd/api/           # Entry point
 internal/
@@ -40,6 +42,7 @@ internal/
 ├── client/        # gRPC client to Python
 ├── model/         # Request/Response models
 proto/             # Protocol Buffers
+
 Made with ❤️ by Konstantin Lychkov
 Looking for Senior Go Developer opportunities
 Email: hotkeez@hotmail.com
